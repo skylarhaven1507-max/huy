@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Playfair Display', 'Merriweather', Georgia, serif;
+    --font-body-serif: 'Merriweather', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: var(--font-serif);
+    letter-spacing: -0.015em;
+  }
+
+  .font-reading {
+    font-family: var(--font-body-serif);
+  }
+}
+
+/* Theme classes */
+.theme-classic {
+  --bg-main: #FDFBF7;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #F5F1E9;
+  --bg-bento: #F9F7F2;
+  --text-ink: #121212;
+  --text-muted: #666666;
+  --border-rule: #E5E0D5;
+  --border-dark: #121212;
+  --accent-color: #8B0000;
+  --accent-gold: #D4AF37;
+}
+
+.theme-modern {
+  --bg-main: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #F1F5F9;
+  --bg-bento: #F8FAFC;
+  --text-ink: #0F172A;
+  --text-muted: #64748B;
+  --border-rule: #CBD5E1;
+  --border-dark: #0F172A;
+  --accent-color: #8B0000;
+  --accent-gold: #D4AF37;
+}
+
+.theme-dark {
+  --bg-main: #0E0D0C;
+  --bg-card: #171615;
+  --bg-subtle: #1F1D1B;
+  --bg-bento: #141312;
+  --text-ink: #FDFBF7;
+  --text-muted: #A39D93;
+  --border-rule: #2B2824;
+  --border-dark: #524D45;
+  --accent-color: #E63946;
+  --accent-gold: #D4AF37;
+}
+
+/* Editorial Newspaper Styles */
+.double-rule-bottom {
+  border-bottom: 4px double var(--border-dark);
+}
+
+.double-rule-top {
+  border-top: 4px double var(--border-dark);
+}
+
+.newspaper-rule {
+  border-color: var(--border-rule);
+}
+
+.bento-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  transition: all 0.2s ease;
+}
+
+.bento-subtle {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-dark);
+}
+
+.bento-tint {
+  background-color: var(--bg-bento);
+  border: 1px solid var(--border-dark);
+}
+
+/* Drop Cap for Article Lead Paragraph */
+.editorial-drop-cap::first-letter {
+  float: left;
+  font-family: var(--font-serif);
+  font-size: 3.75rem;
+  line-height: 0.8;
+  padding-top: 4px;
+  padding-right: 12px;
+  padding-bottom: 2px;
+  font-weight: 700;
+  color: var(--text-ink);
+}
+
+/* Highlighting Search Results */
+mark.search-highlight {
+  background-color: #FEF08A;
+  color: #854D0E;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.theme-dark mark.search-highlight {
+  background-color: #854D0E;
+  color: #FEF08A;
+}
+
+/* Reading Mode Custom Line Heights */
+.reading-tight {
+  line-height: 1.45;
+}
+.reading-normal {
+  line-height: 1.75;
+}
+.reading-relaxed {
+  line-height: 2.05;
+}
+
+/* Custom newspaper divider */
+.ornamental-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--text-muted);
+}
+.ornamental-divider::before,
+.ornamental-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-rule);
+}
+
+/* Print Stylesheet */
+@media print {
+  header, footer, .no-print, nav, .reading-controls, .breaking-news {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+  }
+  .article-content {
+    max-width: 100% !important;
+  }
+}
